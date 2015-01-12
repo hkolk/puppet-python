@@ -162,6 +162,10 @@ class Python < Formula
     # minor updates, such as going from 2.7.0 to 2.7.1:
 
     # Create a site-packages in HOMEBREW_PREFIX/lib/python2.7/site-packages
+    if File.symlink_exists? site_packages
+        site_packages.unlink
+    end
+
     site_packages.mkpath
 
     # Symlink the prefix site-packages into the cellar.
